@@ -1,0 +1,162 @@
+import * as MaterialUiIcons from 'material-ui/lib/svg-icons';
+
+export const Place = MaterialUiIcons.MapsPlace
+export const Bus = MaterialUiIcons.MapsDirectionsBus
+export const Car = MaterialUiIcons.MapsDirectionsCar
+export const Train = MaterialUiIcons.MapsDirectionsRailway
+export const Run = MaterialUiIcons.MapsDirectionsRun
+export const Walk = MaterialUiIcons.MapsDirectionsWalk
+export const CarWash = MaterialUiIcons.MapsLocalCarWash
+export const Bar = MaterialUiIcons.MapsLocalBar
+export const ATM = MaterialUiIcons.MapsLocalAtm
+export const Drink = MaterialUiIcons.MapsLocalDrink
+export const Dining = MaterialUiIcons.MapsLocalDining
+export const Flower = MaterialUiIcons.MapsLocalFlorist
+export const Cafe = MaterialUiIcons.MapsLocalCafe
+export const Gas = MaterialUiIcons.MapsLocalGasStation
+export const Hospital = MaterialUiIcons.MapsLocalHospital
+export const Pharmacy = MaterialUiIcons.MapsLocalPharmacy
+export const Hotel = MaterialUiIcons.MapsLocalHotel
+export const Library = MaterialUiIcons.MapsLocalLibrary
+export const Mall = MaterialUiIcons.MapsLocalMall
+export const Movies = MaterialUiIcons.MapsLocalMovies
+export const Pizza = MaterialUiIcons.MapsLocalPizza
+export const Shipping = MaterialUiIcons.MapsLocalShipping
+export const Map = MaterialUiIcons.MapsMap
+export const Restaurant = MaterialUiIcons.MapsRestaurantMenu
+export const Terrain = MaterialUiIcons.MapsTerrain
+export const Traffic = MaterialUiIcons.MapsTraffic
+
+export const AC = MaterialUiIcons.PlacesAcUnit
+export const Child = MaterialUiIcons.PlacesChildCare
+export const Fitness = MaterialUiIcons.PlacesFitnessCenter
+export const All = MaterialUiIcons.PlacesAllInclusive
+export const Beach = MaterialUiIcons.PlacesBeachAccess
+export const Business = MaterialUiIcons.PlacesBusinessCenter
+export const HotTub = MaterialUiIcons.PlacesHotTub
+export const Kitchen = MaterialUiIcons.PlacesKitchen
+export const Pool = MaterialUiIcons.PlacesPool
+export const Service = MaterialUiIcons.PlacesRoomService
+export const Gulf = MaterialUiIcons.PlacesGolfCourse
+
+export const Smiley = MaterialUiIcons.SocialMood
+export const Frowney = MaterialUiIcons.SocialMoodBad
+export const Cake = MaterialUiIcons.SocialCake
+export const People = MaterialUiIcons.SocialPeople
+export const School = MaterialUiIcons.SocialSchool
+export const Person = MaterialUiIcons.SocialPerson
+export const Public = MaterialUiIcons.SocialPublic
+export const Poll = MaterialUiIcons.SocialPoll
+
+export const WC = MaterialUiIcons.NotificationWc
+export const Power = MaterialUiIcons.NotificationPower
+
+export const Computer = MaterialUiIcons.HardwareComputer
+export const Headphones = MaterialUiIcons.HardwareHeadset
+export const Up = MaterialUiIcons.HardwareKeyboardArrowUp
+export const Right = MaterialUiIcons.HardwareKeyboardArrowRight
+export const Left = MaterialUiIcons.HardwareKeyboardArrowLeft
+export const Down = MaterialUiIcons.HardwareKeyboardArrowDown
+export const Shield = MaterialUiIcons.HardwareSecurity
+export const Tablet = MaterialUiIcons.HardwareTabletMac
+export const Games = MaterialUiIcons.HardwareVideogameAsset
+export const Watch = MaterialUiIcons.HardwareWatch
+
+export const Add = MaterialUiIcons.ContentAddCircle
+export const Remove = MaterialUiIcons.ContentRemoveCircle
+export const Clear = MaterialUiIcons.ContentClear
+export const Scissors = MaterialUiIcons.ContentContentCut
+export const Mail = MaterialUiIcons.ContentMail
+export const Flag = MaterialUiIcons.ContentFlag
+export const Send = MaterialUiIcons.ContentSend
+export const Weekend = MaterialUiIcons.ContentWeekend
+
+export const Music = MaterialUiIcons.ImageAudiotrack
+export const Photo = MaterialUiIcons.ImagePhoto
+export const Camera = MaterialUiIcons.ImagePhotoCamera
+export const Bolt = MaterialUiIcons.ImageFlashOn
+export const Nature = MaterialUiIcons.ImageNaturePeople
+
+export const Mic = MaterialUiIcons.AvMic
+export const Movie = MaterialUiIcons.AvMovie
+export const Cam = MaterialUiIcons.AvVideocam
+export const VolumeUp = MaterialUiIcons.AvVolumeUp
+export const VolumeDown = MaterialUiIcons.AvVolumeDown
+export const Equalizer = MaterialUiIcons.AvEqualizer
+
+export const Email = MaterialUiIcons.CommunicationEmail
+export const Phone = MaterialUiIcons.CommunicationPhone
+export const Chat = MaterialUiIcons.CommunicationChat
+export const Help = MaterialUiIcons.CommunicationLiveHelp
+export const Key = MaterialUiIcons.CommunicationVpnKey
+
+export const Download = MaterialUiIcons.FileFileDownload
+export const Upload = MaterialUiIcons.FileFileUpload
+export const Cloud = MaterialUiIcons.FileCloud
+export const Folder = MaterialUiIcons.FileFolder
+
+export const Airplane = MaterialUiIcons.DeviceAirplanemodeActive
+export const Sun = MaterialUiIcons.DeviceBrightnessLow
+
+export const Refresh = MaterialUiIcons.NavigationRefresh
+export const Cancel = MaterialUiIcons.NavigationCancel
+export const Check = MaterialUiIcons.NavigationCheck
+export const Unfold = MaterialUiIcons.NavigationUnfoldMore
+export const Refold = MaterialUiIcons.NavigationUnfoldLess
+
+export const Chart = MaterialUiIcons.EditorInsertChart
+export const Paperclip = MaterialUiIcons.EditorAttachFile
+export const Paint = MaterialUiIcons.EditorFormatPaint
+export const Functions = MaterialUiIcons.EditorFunctions
+export const Money = MaterialUiIcons.EditorAttachMoney
+
+export const Account = MaterialUiIcons.ActionAccountBalance
+export const Wallet = MaterialUiIcons.ActionAccountBalanceWallet
+export const AccountCircle = MaterialUiIcons.ActionAccountCircle
+export const Build = MaterialUiIcons.ActionBuild
+export const Alarm = MaterialUiIcons.ActionAlarm
+export const Android = MaterialUiIcons.ActionAndroid
+export const Assignment = MaterialUiIcons.ActionAssignment
+export const Bookmark = MaterialUiIcons.ActionBookmark
+export const Gift = MaterialUiIcons.ActionCardGiftcard
+export const Face = MaterialUiIcons.ActionFace
+export const Favorite = MaterialUiIcons.ActionFavorite
+export const FavoriteBorder = MaterialUiIcons.ActionFavoriteBorder
+export const Done = MaterialUiIcons.ActionDone
+export const Donut = MaterialUiIcons.ActionDonutLarge
+export const Fingerprint = MaterialUiIcons.ActionFingerprint
+export const Flight = MaterialUiIcons.ActionFlightTakeoff
+export const Gavel = MaterialUiIcons.ActionGavel
+export const Backup = MaterialUiIcons.ActionBackup
+export const Home = MaterialUiIcons.ActionHome
+export const Hourglass = MaterialUiIcons.ActionHourglassEmpty
+export const Globe = MaterialUiIcons.ActionLanguage
+export const Lock = MaterialUiIcons.ActionLock
+export const Lightbulb = MaterialUiIcons.ActionLightbulbOutline
+export const Mailbox = MaterialUiIcons.ActionMarkunreadMailbox
+export const Motorcycle = MaterialUiIcons.ActionMotorcycle
+export const Hand = MaterialUiIcons.ActionPanTool
+export const Pets = MaterialUiIcons.ActionPets
+export const IVF = MaterialUiIcons.ActionPregnantWoman
+export const Print = MaterialUiIcons.ActionPrint
+export const Problem = MaterialUiIcons.ActionReportProblem
+export const Restore = MaterialUiIcons.ActionRestore
+export const Schedule = MaterialUiIcons.ActionSchedule
+export const Rowing = MaterialUiIcons.ActionRowing
+export const Basket = MaterialUiIcons.ActionShoppingBasket
+export const Cart = MaterialUiIcons.ActionShoppingCart
+export const ThumbsUp = MaterialUiIcons.ActionThumbUp
+export const ThumbsDown = MaterialUiIcons.ActionThumbDown
+export const TimeLine = MaterialUiIcons.ActionTimeline
+export const TrendingUp = MaterialUiIcons.ActionTrendingUp
+export const TrendingDown = MaterialUiIcons.ActionTrendingDown
+export const Visibility = MaterialUiIcons.ActionVisibility
+export const CreditCard = MaterialUiIcons.ActionCreditCard
+export const Grade = MaterialUiIcons.ActionGrade
+export const Identity = MaterialUiIcons.ActionPermIdentity
+export const Travel = MaterialUiIcons.ActionCardTravel
+export const Work = MaterialUiIcons.ActionWork
+export const Seat = MaterialUiIcons.ActionEventSeat
+export const Delete = MaterialUiIcons.ActionDelete
+export const Extension = MaterialUiIcons.ActionExtension
+export const Explore = MaterialUiIcons.ActionExplore

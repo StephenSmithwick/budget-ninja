@@ -16,11 +16,7 @@ module.exports = class Root extends Component {
        * calls in component hierarchy below.
        */
       <Provider store={store}>
-        <div>
-          <App />
-          {/* Being the dev version of our Root component, we include DevTools below */}
-          <DevTools />
-        </div>
+        <App />
       </Provider>
     );
   }

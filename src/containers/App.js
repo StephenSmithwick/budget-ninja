@@ -2,8 +2,14 @@ import React, { Component, PropTypes } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import * as CounterActions from '../actions/CounterActions';
+import TransactionActions from '../actions/TransactionActions';
+import Accounts from '../components/Accounts';
+import Transactions from '../components/Transactions';
+import TransactionDetails from '../components/TransactionDetails';
 import Counter from '../components/Counter';
 import Footer from '../components/Footer';
+
+import Divider from 'material-ui/lib/divider';
 
 /**
  * It is common practice to have a 'Root' container/component require our main App (this one).
@@ -12,13 +18,14 @@ import Footer from '../components/Footer';
  */
 export default class App extends Component {
   render() {
-    // we can use ES6's object destructuring to effectively 'unpack' our props
-    const { counter, actions } = this.props;
+    const { counter, actions, accounts } = this.props;
+
     return (
       <div className="main-app-container">
-        <div className="main-app-nav">Simple Redux Boilerplate</div>
-        {/* notice that we then pass those unpacked props into the Counter component */}
-        <Counter counter={counter} actions={actions} />
+        <Accounts />
+        <Divider inset={true} />
+        <Transactions/>
+        <TransactionDetails />
         <Footer />
       </div>
     );
@@ -37,6 +44,9 @@ App.propTypes = {
  */
 function mapStateToProps(state) {
   return {
+    accounts: state.accounts,
+    transactions: state.transactions.collection,
+    categories: state.categories,
     counter: state.counter
   };
 }
@@ -51,7 +61,8 @@ function mapStateToProps(state) {
  */
 function mapDispatchToProps(dispatch) {
   return {
-    actions: bindActionCreators(CounterActions, dispatch)
+    actions: bindActionCreators(CounterActions, dispatch),
+    transactionActions: bindActionCreators(TransactionActions, dispatch)
   };
 }
 

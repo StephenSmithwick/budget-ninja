@@ -1,5 +1,8 @@
 import { combineReducers } from 'redux';
 import counter from './counter';
+import accounts from './accounts';
+import transactions from './transactions';
+import categories from './categories';
 
 /**
  * combineReducers is important to understand. As your app might grow in size
@@ -15,7 +18,7 @@ import counter from './counter';
  * More info: http://rackt.org/redux/docs/api/combineReducers.html
  */
 const rootReducer = combineReducers({
-  counter, // you might be used to: counter: counter,
+  counter, accounts, transactions, categories
 });
 
 export default rootReducer;

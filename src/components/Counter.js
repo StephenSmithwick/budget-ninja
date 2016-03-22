@@ -14,6 +14,8 @@ export default class Counter extends Component {
   }
 
   render() {
+    const {actions} = this.props;
+
     return (
       <div className="counter-container">
         <div className="counter-num-label">{this.props.counter}</div>
@@ -23,8 +25,8 @@ export default class Counter extends Component {
         <div className="counter-even-label">{this.props.counter % 2 === 0 ? 'even' : 'odd'}</div>
         <br />
         <div className="counter-buttons">
-          <button onClick={() => {this.handleDecrement();}}>-</button>
-          <button onClick={() => {this.handleIncrement();}}>+</button>
+          <button onClick={() => actions.decrement()}>-</button>
+          <button onClick={() => actions.increment()}>+</button>
         </div>
       </div>
     );
