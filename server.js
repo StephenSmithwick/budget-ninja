@@ -9,12 +9,12 @@ module.exports = function (app) {
     res.sendFile(path.join(__dirname, 'index.html'));
   });
 
-  app.listen(port, 'localhost', (err) => {
+  app.listen(port, (err) => {
     if (err) {
       console.log(err);
       return;
     }
 
-    console.log(`Listening at http://localhost:${port}`);
+    console.log(`Listening at port: ${port}`);
   })
 };
