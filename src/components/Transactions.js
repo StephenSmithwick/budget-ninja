@@ -59,12 +59,14 @@ class Transactions extends Component {
       <List subheader="Transactions" insetSubheader={true}>
         {(transactions||[]).map(transaction => {
           const account = this.account(transaction);
+          const currency = <span className='currency'>{account.currency}</span>
 
-          return (<ListItem
+          return (<ListItem className='transaction' 
             leftAvatar={<Avatar icon={this.mainCategoryIcon(transaction)} />}
             primaryText={transaction.payee}>
-            <span>{transaction.date}</span>
-            <span style={{float: 'right'}}>{transaction.total} <span className='currency'>{account.currency}</span></span>
+            <span className='date'>{transaction.date}</span>
+            <span className='description'>{transaction.description}</span>
+            <span className='total'>{transaction.total} {currency}</span>
           </ListItem>)
         })}
       </List>
