@@ -1,3 +1,5 @@
+@import "normalize";
+@import "skeleton";
 
 
 $main-bg-color: #f1f2f0;
@@ -28,24 +30,11 @@ footer {
 }
 
 .currency{
-  font-size: smaller; 
-  color: $accent-blue;
+  color: $accent-black;
+  font-size: 0.6em;
   margin: 0.5em;
 }
 
-.transaction {
-  span {
-    display: inline-block;
-    &.date {
-      min-width: 100px;
-    }
-    &.description {
-      min-width: 300px;
-    }
-    &.total {
-      float: right;
-      min-width: 50px;
-    }
-  }
-  
+.transaction .details .total {
+  color: $accent-blue;  
 }

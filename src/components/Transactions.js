@@ -61,12 +61,14 @@ class Transactions extends Component {
           const account = this.account(transaction);
           const currency = <span className='currency'>{account.currency}</span>
 
-          return (<ListItem className='transaction' 
+          return (<ListItem className='transaction'
             leftAvatar={<Avatar icon={this.mainCategoryIcon(transaction)} />}
-            primaryText={transaction.payee}>
-            <span className='date'>{transaction.date}</span>
-            <span className='description'>{transaction.description}</span>
-            <span className='total'>{transaction.total} {currency}</span>
+            primaryText={transaction.description}>
+            <span className='row'>
+              <span className='three columns'>{transaction.date}</span>
+              <span className='four columns'>{transaction.payee}</span>
+              <span className='three columns total'>{transaction.total} {currency}</span>
+            </span>
           </ListItem>)
         })}
       </List>
