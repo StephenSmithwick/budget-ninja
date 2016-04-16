@@ -9,6 +9,37 @@ $accent-black: #35342f;
 $accent-orange: #ec6b2d;
 $accent-red: #dd6464;
 
+.lined-paper {
+  background-color: #fff; 
+  background-image: 
+  linear-gradient(90deg, transparent 79px, #abced4 79px, #abced4 81px, transparent 81px),
+  linear-gradient(#eee .1em, transparent .1em);
+  background-size: 100% 1.2em;
+}
+
+.argyle {
+  background-color: #6d695c;
+  background-image:
+  repeating-linear-gradient(120deg, rgba(255,255,255,.1), rgba(255,255,255,.1) 1px, transparent 1px, transparent 60px),
+  repeating-linear-gradient(60deg, rgba(255,255,255,.1), rgba(255,255,255,.1) 1px, transparent 1px, transparent 60px),
+  linear-gradient(60deg, rgba(0,0,0,.1) 25%, transparent 25%, transparent 75%, rgba(0,0,0,.1) 75%, rgba(0,0,0,.1)),
+  linear-gradient(120deg, rgba(0,0,0,.1) 25%, transparent 25%, transparent 75%, rgba(0,0,0,.1) 75%, rgba(0,0,0,.1));
+  background-size: 70px 120px;
+}
+
+.stripes {
+  background-color: #026873;
+  background-image: linear-gradient(90deg, rgba(255,255,255,.07) 50%, transparent 50%),
+  linear-gradient(90deg, rgba(255,255,255,.13) 50%, transparent 50%),
+  linear-gradient(90deg, transparent 50%, rgba(255,255,255,.17) 50%),
+  linear-gradient(90deg, transparent 50%, rgba(255,255,255,.19) 50%);
+  background-size: 13px, 29px, 37px, 53px;
+}
+
+body {
+  @extend .argyle;
+  background-color: $accent-gray;
+}
 
 footer {
   font-size: 0.75em;
@@ -35,6 +66,15 @@ footer {
   margin: 0.5em;
 }
 
-.transaction .details .total {
-  color: $accent-blue;  
+.transaction {
+  .payee {
+    float: right;
+  }
+  .total {
+    float: right;
+    color: $accent-blue;  
+  }
+  .description {
+    color: $accent-black;
+  }
 }

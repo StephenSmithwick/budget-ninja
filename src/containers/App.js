@@ -8,6 +8,7 @@ import Transactions from '../components/Transactions';
 import TransactionDetails from '../components/TransactionDetails';
 import Counter from '../components/Counter';
 import Footer from '../components/Footer';
+import Header from '../components/Header';
 
 import Divider from 'material-ui/lib/divider';
 
@@ -22,6 +23,7 @@ export default class App extends Component {
 
     return (
       <div className="main-app-container">
+        <Header />
         <Accounts />
         <Divider inset={true} />
         <Transactions/>

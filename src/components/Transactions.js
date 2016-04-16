@@ -63,11 +63,15 @@ class Transactions extends Component {
 
           return (<ListItem className='transaction'
             leftAvatar={<Avatar icon={this.mainCategoryIcon(transaction)} />}
-            primaryText={transaction.description}>
+            primaryText={<span className='description'>{transaction.description}</span>}>
             <span className='row'>
-              <span className='three columns'>{transaction.date}</span>
-              <span className='four columns'>{transaction.payee}</span>
-              <span className='three columns total'>{transaction.total} {currency}</span>
+              <span className='seven columns'>
+                <span className='date'>{transaction.date}</span>
+                <span className='payee'>{transaction.payee}</span>
+              </span>
+              <span className='three columns'>
+                <span className='total'>{transaction.total} {currency}</span>
+              </span>
             </span>
           </ListItem>)
         })}
