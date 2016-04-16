@@ -1,7 +1,6 @@
 @import "normalize";
 @import "skeleton";
 
-
 $main-bg-color: #f1f2f0;
 $accent-blue: #37bbe4;
 $accent-gray: #e1e0dd;
@@ -36,12 +35,14 @@ $accent-red: #dd6464;
   background-size: 13px, 29px, 37px, 53px;
 }
 
-body {
+header {
   @extend .argyle;
   background-color: $accent-gray;
 }
 
 footer {
+  @extend .argyle;
+  background-color: $accent-gray;
   font-size: 0.75em;
   text-align: center;
   padding-top: 10em;
