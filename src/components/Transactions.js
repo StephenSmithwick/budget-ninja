@@ -62,14 +62,14 @@ class Transactions extends Component {
           const currency = <span className='currency'>{account.currency}</span>
 
           return (<ListItem className='transaction'
-            leftAvatar={<Avatar icon={this.mainCategoryIcon(transaction)} />}
-            primaryText={<span className='description'>{transaction.description}</span>}>
+            leftAvatar={<Avatar icon={this.mainCategoryIcon(transaction)} />}>
             <span className='row'>
-              <span className='seven columns'>
+              <span className='four columns'>
                 <span className='date'>{transaction.date}</span>
                 <span className='payee'>{transaction.payee}</span>
               </span>
-              <span className='three columns'>
+              <span className='five columns'>
+                <span className='description'>{transaction.description}</span>
                 <span className='total'>{transaction.total} {currency}</span>
               </span>
             </span>

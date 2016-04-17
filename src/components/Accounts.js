@@ -30,13 +30,19 @@ export default class Accounts extends Component {
 
     return (
       <List subheader="Accounts" insetSubheader={true}>
-        {accounts.map((account) => (
-          <ListItem
-            leftAvatar={<Avatar icon={<ActionAccountBalance />} />}
-            primaryText={account.name}
-            secondaryText={`${account.balance} ${account.currency}`}
-          />
-        ))}
+        {accounts.map((account) => {
+          const currency = <span className='currency'>{account.currency}</span>;
+          const icon = <ActionAccountBalance/>;
+          
+          return (<ListItem className='account' leftAvatar={<Avatar icon={icon}/>}>
+            <span className='row'>
+              <span className='nine columns'>
+                <span className='name'>{account.name}</span>
+                <span className='total'>${account.balance} {currency}</span>
+              </span>
+            </span>
+          </ListItem>)
+        })}
       </List>
     );
   }
