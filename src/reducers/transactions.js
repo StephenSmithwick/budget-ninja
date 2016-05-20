@@ -1,4 +1,4 @@
-import {SELECT_TRANSACTION, UNSELECT_TRANSACTION} from '../actions/TransactionActions'
+import {UPDATE_TRANSACTION, SELECT_TRANSACTION, UNSELECT_TRANSACTION} from '../actions/TransactionActions'
 import update from 'react-addons-update'
 
 const initialState = {
@@ -54,12 +54,30 @@ const initialState = {
   ]
 }
 
+function update_state(state, transaction, change) {
+  const index = state.collection.findIndex( t => t.id == transaction.id)
+  return (index == -1) ? state : update(state, change(index))
+}
+
 export default function transactions(state = initialState, action) {
   switch (action.type) {
+  case UPDATE_TRANSACTION:
+    return update_state(state, action.transaction,  function(i) {
+      const updated_transaction = update(state.collection[i], {$merge: action.delta})
+      return {
+        selected: {$set: updated_transaction},
+        collection: { $splice: [[i, 1, updated_transaction]] }
+      }
+    })
+
   case SELECT_TRANSACTION:
-    return update(state, {selected: {$set: action.transaction}})
+    return update_state(state, action.transaction, i => ({
+      selected: {$set: action.transaction}
+    }))
+
   case UNSELECT_TRANSACTION:
     return update(state, {selected: {$set: null}})
+
   default:
     return state
   }

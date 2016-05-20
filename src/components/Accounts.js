@@ -36,9 +36,9 @@ export default class Accounts extends Component {
           
           return (<ListItem className='account' leftAvatar={<Avatar icon={icon}/>}>
             <span className='row'>
-              <span className='nine columns'>
+              <span className='ten columns'>
                 <span className='name'>{account.name}</span>
-                <span className='total'>${account.balance} {currency}</span>
+                <span className='total'>{account.balance} {currency}</span>
               </span>
             </span>
           </ListItem>)

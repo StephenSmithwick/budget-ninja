@@ -59,12 +59,14 @@ class Transactions extends Component {
       <List subheader="Transactions" insetSubheader={true}>
         {(transactions||[]).map(transaction => {
           const account = this.account(transaction);
-          const currency = <span className='currency'>{account.currency}</span>
+          const currency = <span className='currency'>{account.currency}</span>;
+          const selectTransaction = () => { actions.selectTransaction(transaction) };
 
-          return (<ListItem className='transaction'
-            leftAvatar={<Avatar icon={this.mainCategoryIcon(transaction)} />}>
-            <span className='row'>
-              <span className='four columns'>
+          return (<ListItem className='transaction skeleton'
+            leftAvatar={<Avatar icon={this.mainCategoryIcon(transaction)} />}
+            onClick={selectTransaction}>
+            <span className='row' onClick={this.log}>
+              <span className='five columns'>
                 <span className='date'>{transaction.date}</span>
                 <span className='payee'>{transaction.payee}</span>
               </span>
@@ -76,7 +78,7 @@ class Transactions extends Component {
           </ListItem>)
         })}
       </List>
-    );
+    )
   }
 }
 

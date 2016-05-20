@@ -11,6 +11,8 @@ import Footer from '../components/Footer';
 import Header from '../components/Header';
 
 import Divider from 'material-ui/lib/divider';
+import injectTapEventPlugin from 'react-tap-event-plugin';
+injectTapEventPlugin();
 
 /**
  * It is common practice to have a 'Root' container/component require our main App (this one).
