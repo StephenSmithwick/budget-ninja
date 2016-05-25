@@ -2,7 +2,7 @@ import {UPDATE_TRANSACTION, SELECT_TRANSACTION, UNSELECT_TRANSACTION} from '../a
 import update from 'react-addons-update'
 
 const initialState = {
-  selected: false,
+  selected: null,
   collection: [{
       id: 1,
       account_id: 2,

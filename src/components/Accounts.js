@@ -8,8 +8,7 @@ import TableHeader from 'material-ui/lib/table/table-header';
 import TableRowColumn from 'material-ui/lib/table/table-row-column';
 import TableBody from 'material-ui/lib/table/table-body';
 
-import List from 'material-ui/lib/lists/list';
-import ListItem from 'material-ui/lib/lists/list-item';
+import {List, ListItem} from 'material-ui/List';
 import ActionInfo from 'material-ui/lib/svg-icons/action/info';
 import Avatar from 'material-ui/lib/avatar';
 import FileFolder from 'material-ui/lib/svg-icons/file/folder';
@@ -33,7 +32,7 @@ export default class Accounts extends Component {
         {accounts.map((account) => {
           const currency = <span className='currency'>{account.currency}</span>;
           const icon = <ActionAccountBalance/>;
-          
+
           return (<ListItem className='account' leftAvatar={<Avatar icon={icon}/>}>
             <span className='row'>
               <span className='ten columns'>

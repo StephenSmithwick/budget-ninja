@@ -60,26 +60,26 @@ class TransactionsDetails extends Component {
     const account = this.account(transaction);
 
     const select = (label, property, options) =>
-      <SelectField hintText={label} 
+      <SelectField hintText={label}
                    floatingLabelText={label}
-                   value={transaction.account_id} 
+                   value={transaction.account_id}
                    onChange={(e, i, value) => actions.updateTransaction(transaction, {[property]: value})}>
-        {options.map(options => 
+        {options.map(options =>
           <MenuItem key={options.id} value={options.id} primaryText={options.name}/>
         )}
       </SelectField>
 
-    const text = (label, property) => 
-      <TextField hintText={label} 
+    const text = (label, property) =>
+      <TextField hintText={label}
                  floatingLabelText={label}
-                 value={transaction[property]} 
+                 value={transaction[property]}
                  onChange={e => actions.updateTransaction(transaction, {[property]: e.target.value})}/>
 
     // const date = <DatePicker label={label} onChange={date => actions.updateTransaction(transaction, {[property]: date})} value={transaction.date} />
-    const date = (label, property) => 
-      <DatePicker hintText={label} 
+    const date = (label, property) =>
+      <DatePicker hintText={label}
                   floatingLabelText={label}
-                  mode="landscape" 
+                  mode="landscape"
                   value={transaction[property]}
                   onChange={(e,date) => actions.updateTransaction(transaction, {[property]: date})}/>
 
@@ -89,10 +89,10 @@ class TransactionsDetails extends Component {
     console.log("new Date(moment(transaction['date']).valueOf()) = %o", new Date(moment(transaction['date']).valueOf()))
 
     return (
-      <Dialog title={transaction.payee} 
-              actions={<RaisedButton label="Done" primary={true} keyboardFocused={true} onClick={actions.unselectTransaction}/>} 
-              open={true} 
-              modal={true}>
+      <Dialog title={transaction.payee}
+              actions={<RaisedButton label="Done" primary={true}
+              keyboardFocused={true} open={true} modal={true}
+              onClick={actions.unselectTransaction}/>}>
           <div className='row'>{select('Account', 'account_id', accounts)}</div>
           <div className='row'>{text('Payee', 'payee')}</div>
           <div className='row'>{date('Date', 'date')}</div>
@@ -104,7 +104,7 @@ class TransactionsDetails extends Component {
 }
 
 TransactionsDetails.propTypes = {
-  transaction: PropTypes.object.isRequired
+  transaction: PropTypes.object
 };
 
 export default connect(

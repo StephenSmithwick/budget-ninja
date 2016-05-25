@@ -1,5 +1,4 @@
 import { combineReducers } from 'redux';
-import counter from './counter';
 import accounts from './accounts';
 import transactions from './transactions';
 import categories from './categories';
@@ -18,7 +17,7 @@ import categories from './categories';
  * More info: http://rackt.org/redux/docs/api/combineReducers.html
  */
 const rootReducer = combineReducers({
-  counter, accounts, transactions, categories
+  accounts, transactions, categories
 });
 
 export default rootReducer;
