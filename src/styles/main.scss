@@ -41,6 +41,10 @@ $accent-red: #dd6464;
 header {
   @extend .stripes;
   // background-color: $accent-gray;
+  h1 {
+    width: 330px;
+    margin: auto;
+  }
 }
 
 footer {

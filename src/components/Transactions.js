@@ -2,22 +2,9 @@ import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
-import Table from 'material-ui/lib/table/table';
-import TableHeaderColumn from 'material-ui/lib/table/table-header-column';
-import TableRow from 'material-ui/lib/table/table-row';
-import TableHeader from 'material-ui/lib/table/table-header';
-import TableRowColumn from 'material-ui/lib/table/table-row-column';
-import TableBody from 'material-ui/lib/table/table-body';
-
 import {List, ListItem} from 'material-ui/List';
-import ActionInfo from 'material-ui/lib/svg-icons/action/info';
-import Avatar from 'material-ui/lib/avatar';
-import FileFolder from 'material-ui/lib/svg-icons/file/folder';
-import ActionAssignment from 'material-ui/lib/svg-icons/action/assignment';
-import IconChooser from './IconChooser';
-import Colors from 'material-ui/lib/styles/colors';
-import EditorInsertChart from 'material-ui/lib/svg-icons/editor/insert-chart';
-import {ActionAccountBalance} from 'material-ui/lib/svg-icons';
+import Subheader from 'material-ui/Subheader';
+import Avatar from 'material-ui/Avatar';
 
 import TransactionActions from '../actions/TransactionActions';
 import * as Icons from './Icons';
@@ -55,29 +42,29 @@ class Transactions extends Component {
     const {transactions, actions, accounts} = this.props;
 
     return (
-      <List subheader="Transactions" insetSubheader={true}>
-        {(transactions||[]).map(transaction => {
+      <div className="skeleton"><List className="container">
+      <Subheader>Transactions</Subheader>
+        {(transactions||[]).map((transaction, i) => {
           const account = this.account(transaction);
           const currency = <span className='currency'>{account.currency}</span>;
           const selectTransaction = () => { actions.selectTransaction(transaction) };
 
-          return (<ListItem className='transaction skeleton'
+          return (<ListItem key={i} className='transaction'
             leftAvatar={<Avatar icon={this.mainCategoryIcon(transaction)} />}
             onClick={selectTransaction}>
             <span className='row' onClick={this.log}>
-              <span className='five columns'>
+              <span className='six columns'>
                 <span className='date'>{transaction.date}</span>
                 <span className='payee'>{transaction.payee}</span>
               </span>
-              <span className='five columns'>
+              <span className='six columns'>
                 <span className='description'>{transaction.description}</span>
                 <span className='total'>{transaction.total} {currency}</span>
               </span>
             </span>
           </ListItem>)
         })}
-      </List>
-    )
+      </List></div>)
   }
 }
 
