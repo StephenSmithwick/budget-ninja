@@ -72,7 +72,6 @@ class TransactionsDetails extends Component {
     const date = (label, property) =>
       <DatePicker hintText={label}
                   floatingLabelText={label}
-                  mode="landscape"
                   autoOk={true}
                   value={string2Date(transaction[property])}
                   onChange={(e,date) => actions.updateTransaction(transaction, {[property]: date2String(date)})}/>
@@ -89,6 +88,7 @@ class TransactionsDetails extends Component {
           title={transaction.payee}
           actions={ok}
           open={true}
+          autoScrollBodyContent={true}
           onRequestClose={actions.unselectTransaction}
         >
           <div className='row'>{select('Account', 'account_id', accounts)}</div>
