@@ -7,7 +7,7 @@ import Transactions from '../components/Transactions';
 import TransactionDetails from '../components/TransactionDetails';
 import Footer from '../components/Footer';
 import Header from '../components/Header';
-import Divider from 'material-ui/lib/divider';
+import Divider from 'material-ui/Divider';
 
 import lightBaseTheme from 'material-ui/styles/baseThemes/lightBaseTheme';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
