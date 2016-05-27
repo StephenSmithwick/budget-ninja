@@ -1,4 +1,4 @@
-import * as MaterialUiIcons from 'material-ui/lib/svg-icons';
+import * as MaterialUiIcons from 'material-ui/svg-icons';
 
 export const Place = MaterialUiIcons.MapsPlace
 export const Bus = MaterialUiIcons.MapsDirectionsBus
