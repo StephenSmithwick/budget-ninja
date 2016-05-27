@@ -6,14 +6,13 @@ import moment from 'moment';
 
 import TransactionActions from '../actions/TransactionActions';
 
-import Dialog from 'material-ui/lib/dialog';
-import RaisedButton from 'material-ui/lib/raised-button';
+import Dialog from 'material-ui/Dialog';
+import RaisedButton from 'material-ui/RaisedButton';
 
-import TextField from 'material-ui/lib/text-field';
-import SelectField from 'material-ui/lib/select-field';
-import MenuItem from 'material-ui/lib/menus/menu-item';
-// import DatePicker from 'react-toolbox/lib/date_picker';
-import DatePicker from 'material-ui/lib/date-picker/date-picker';
+import TextField from 'material-ui/TextField';
+import SelectField from 'material-ui/SelectField';
+import MenuItem from 'material-ui/MenuItem';
+import DatePicker from 'material-ui/DatePicker';
 
 
 class TransactionsDetails extends Component {
@@ -46,17 +45,9 @@ class TransactionsDetails extends Component {
   }
 
   render() {
-    const {transaction} = this.props;
-
-    if(transaction) {
-      return this.render_transaction();
-    } else {
-      return <span/>
-    }
-  }
-
-  render_transaction() {
     const {transaction, actions, accounts} = this.props;
+    if(!transaction) return null;
+
     const account = this.account(transaction);
 
     const select = (label, property, options) =>
@@ -76,23 +67,30 @@ class TransactionsDetails extends Component {
                  onChange={e => actions.updateTransaction(transaction, {[property]: e.target.value})}/>
 
     // const date = <DatePicker label={label} onChange={date => actions.updateTransaction(transaction, {[property]: date})} value={transaction.date} />
+    const string2Date = (str) => new Date(moment(str, "YYYY-MM-DD"))
+    const date2String = (date) => moment(date).format("YYYY-MM-DD")
     const date = (label, property) =>
       <DatePicker hintText={label}
                   floatingLabelText={label}
                   mode="landscape"
-                  value={transaction[property]}
-                  onChange={(e,date) => actions.updateTransaction(transaction, {[property]: date})}/>
+                  autoOk={true}
+                  value={string2Date(transaction[property])}
+                  onChange={(e,date) => actions.updateTransaction(transaction, {[property]: date2String(date)})}/>
 
-    console.log("transaction['date'] = %o", transaction['date'])
-    console.log("moment(transaction['date']) = %o", moment(transaction['date']))
-    console.log("moment(transaction['date']).valueOf() = %i", moment(transaction['date']).valueOf())
-    console.log("new Date(moment(transaction['date']).valueOf()) = %o", new Date(moment(transaction['date']).valueOf()))
+    const ok = <RaisedButton
+        label="Ok"
+        primary={true}
+        keyboardFocused={true}
+        onTouchTap={actions.unselectTransaction}
+      />
 
     return (
-      <Dialog title={transaction.payee}
-              actions={<RaisedButton label="Done" primary={true}
-              keyboardFocused={true} open={true} modal={true}
-              onClick={actions.unselectTransaction}/>}>
+        <Dialog
+          title={transaction.payee}
+          actions={ok}
+          open={true}
+          onRequestClose={actions.unselectTransaction}
+        >
           <div className='row'>{select('Account', 'account_id', accounts)}</div>
           <div className='row'>{text('Payee', 'payee')}</div>
           <div className='row'>{date('Date', 'date')}</div>

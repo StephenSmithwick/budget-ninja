@@ -6,7 +6,7 @@ const initialState = {
   collection: [{
       id: 1,
       account_id: 2,
-      date: "1-1-1983",
+      date: "1983-01-01",
       description: "Test AU - 1",
       payee: "Coles",
       total: 80,
@@ -18,7 +18,7 @@ const initialState = {
     }, {
       id: 2,
       account_id: 2,
-      date: "28-12-1982",
+      date: "1982-12-28",
       description: "Test AU - 2",
       payee: "Woolworths",
       total: 120,
@@ -30,7 +30,7 @@ const initialState = {
     }, {
       id: 3,
       account_id: 1,
-      date: "16-12-1982",
+      date: "1982-12-16",
       description: "Test US",
       payee: "Amazon",
       total: 80,
@@ -41,7 +41,7 @@ const initialState = {
     }, {
       id: 4,
       account_id: 2,
-      date: "16-12-1982",
+      date: "1982-12-16",
       description: "Test Australia",
       payee: "Woolworths",
       total: 110,
