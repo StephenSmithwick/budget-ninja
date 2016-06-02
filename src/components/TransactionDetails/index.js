@@ -3,14 +3,17 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
 import TransactionActions from '../../actions/TransactionActions';
+import {Check} from '../Icons';
 import SelectInput from './SelectInput'
 import TextInput from './TextInput'
 import AmountInput from './AmountInput'
 import DateInput from './DateInput'
 
 import Subheader from 'material-ui/Subheader';
+import FlatButton from 'material-ui/FlatButton';
 import RaisedButton from 'material-ui/RaisedButton';
 import {List, ListItem} from 'material-ui/List';
+import {fullWhite, blue500} from 'material-ui/styles/colors';
 
 class TransactionsDetails extends Component {
   constructor(props, context) {
@@ -66,11 +69,13 @@ class TransactionsDetails extends Component {
             <TextInput  label='Description' property='description'/>
           </span></ListItem>
           <ListItem><span className="row">
-            <RaisedButton
-              label="Ok"
-              primary={true}
-              keyboardFocused={true}
-              onTouchTap={dispatch.unselectTransaction}/>
+              <RaisedButton
+                label="Done"
+                primary={true}
+                icon={<Check color={fullWhite} />}
+                className="col-xs"
+                onTouchTap={dispatch.unselectTransaction}
+              />
           </span></ListItem>
       </List></div>
     );

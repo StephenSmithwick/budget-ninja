@@ -19,8 +19,10 @@ export default function Accounts(props) {
 
         return (<ListItem className='account' key={i} leftAvatar={avatar}>
           <span className='row'>
-            <span className='twelve columns'>
+            <span className='col-xs'>
               <span className='name'>{account.name}</span>
+            </span>
+            <span className='col-xs'>
               <span className='total'>{account.balance} {currency}</span>
             </span>
           </span>

@@ -39,7 +39,7 @@ class Transactions extends Component {
   }
 
   render() {
-    const {transactions, actions, accounts} = this.props;
+    const {transactions, dispatch, accounts} = this.props;
 
     return (
       <List>
@@ -47,19 +47,33 @@ class Transactions extends Component {
         {(transactions||[]).map((transaction, i) => {
           const account = this.account(transaction);
           const currency = <span className='currency'>{account.currency}</span>;
-          const selectTransaction = () => { actions.selectTransaction(transaction) };
+          const selectTransaction = () => { dispatch.selectTransaction(transaction) };
+          const avatar = <Avatar icon={this.mainCategoryIcon(transaction)}
+            style={{top: '50%', transform: 'translateY(-50%)'}} />
 
           return (<ListItem key={i} className='transaction'
-            leftAvatar={<Avatar icon={this.mainCategoryIcon(transaction)} />}
+            leftAvatar={avatar}
             onClick={selectTransaction}>
             <span className='row'>
-              <span className='six columns'>
-                <span className='date'>{transaction.date}</span>
-                <span className='payee'>{transaction.payee}</span>
+              <span className='col-xs-12 col-sm-6'>
+                <span className="row">
+                  <span className='col-xs-6'>
+                    <span className="date">{transaction.date}</span>
+                  </span>
+                  <span className='col-xs-6'>
+                    <span className="payee">{transaction.payee}</span>
+                  </span>
+                </span>
               </span>
-              <span className='six columns'>
-                <span className='description'>{transaction.description}</span>
-                <span className='total'>{transaction.total} {currency}</span>
+              <span className='col-xs-12 col-sm-6'>
+                <span className="row">
+                  <span className='col-xs-6'>
+                    <span className="description">{transaction.description}</span>
+                  </span>
+                  <span className='col-xs-6'>
+                    <span className="total">{transaction.total} {currency}</span>
+                  </span>
+                </span>
               </span>
             </span>
           </ListItem>)
@@ -72,7 +86,7 @@ Transactions.propTypes = {
   accounts: PropTypes.arrayOf(PropTypes.object).isRequired,
   transactions: PropTypes.arrayOf(PropTypes.object).isRequired,
   categories: PropTypes.arrayOf(PropTypes.object).isRequired,
-  actions: PropTypes.object.isRequired
+  dispatch: PropTypes.object.isRequired
 };
 
 export default connect(
@@ -82,6 +96,6 @@ export default connect(
     categories: state.categories
   }),
   dispatch => ({
-    actions: bindActionCreators(TransactionActions, dispatch)
+    dispatch: bindActionCreators(TransactionActions, dispatch)
   })
 )(Transactions)

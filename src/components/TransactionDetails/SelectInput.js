@@ -11,7 +11,7 @@ function SelectInput(props) {
   const {transaction, label, property, options, dispatch} = props
 
   return (
-    <span className="select-field {property} six columns">
+    <span className="select-field {property} col-xs">
       <SelectField hintText={label}
                    floatingLabelText={label}
                    style={{width: '100%'}}

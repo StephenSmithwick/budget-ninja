@@ -10,7 +10,7 @@ function AmountInput(props) {
   const {currency, transaction, account, label, property, dispatch} = props;
 
   return (
-    <span className="amount-field {property} six columns">
+    <span className="amount-field {property} col-xs">
       <TextField hintText={label}
            floatingLabelText={label}
            style={{width: '80%'}}

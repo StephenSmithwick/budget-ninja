@@ -17,7 +17,7 @@ function DateInput(props) {
   const date2String = (date) => moment(date).format(format)
 
   return (
-    <span className="date-field {property} six columns">
+    <span className="date-field {property} col-xs">
       <DatePicker hintText={label}
                 floatingLabelText={label}
                 textFieldStyle={{width: '100%'}}

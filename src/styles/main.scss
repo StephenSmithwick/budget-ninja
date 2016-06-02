@@ -1,5 +1,5 @@
 @import "normalize";
-@import "skeleton";
+@import "flexboxgrid";
 
 $main-bg-color: #f1f2f0;
 $accent-blue: #37bbe4;
@@ -39,7 +39,6 @@ header {
   @extend .stripes;
   // background-color: $accent-gray;
   h1 {
-    width: 330px;
     margin: auto;
   }
 }
@@ -72,21 +71,19 @@ footer {
   margin: 0.5em;
 }
 
+.total {
+  float: right;
+  color: $accent-blue;
+}
+
 .transaction {
-  .payee {
-    float: right;
-  }
-  .total {
-    float: right;
-    color: $accent-blue;
-  }
   .description {
     color: $accent-black;
   }
 }
-.account {
-  .total {
+
+@media only screen and (max-width: 48em) {
+  .transaction .payee {
     float: right;
-    color: $accent-blue;
   }
 }

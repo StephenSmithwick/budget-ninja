@@ -10,7 +10,7 @@ function TextInput(props) {
   const {transaction, label, property, dispatch} = props
 
   return (
-    <span className="text-field {property} six columns">
+    <span className="text-field {property} col-xs">
       <TextField hintText={label}
              floatingLabelText={label}
              style={{width: '100%'}}
