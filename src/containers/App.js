@@ -23,13 +23,16 @@ export default class App extends Component {
     const { actions, accounts } = this.props;
 
     return (
-      <MuiThemeProvider muiTheme={lightMuiTheme}><div className="main-app-container">
-        <Header />
-        <Accounts />
-        <Divider inset={true} />
-        <Transactions/>
-        <TransactionDetails />
-        <Footer />
+      <MuiThemeProvider muiTheme={lightMuiTheme}><div>
+        <Header/>
+        <div className="container">
+          <Accounts />
+          <Divider inset={true} />
+          <Transactions/>
+          <Divider inset={true} />
+          <TransactionDetails />
+        </div>
+        <Footer/>
       </div></MuiThemeProvider>
     );
   }

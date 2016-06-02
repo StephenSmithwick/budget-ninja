@@ -42,7 +42,7 @@ class Transactions extends Component {
     const {transactions, actions, accounts} = this.props;
 
     return (
-      <div className="skeleton"><List className="container">
+      <List>
       <Subheader>Transactions</Subheader>
         {(transactions||[]).map((transaction, i) => {
           const account = this.account(transaction);
@@ -52,7 +52,7 @@ class Transactions extends Component {
           return (<ListItem key={i} className='transaction'
             leftAvatar={<Avatar icon={this.mainCategoryIcon(transaction)} />}
             onClick={selectTransaction}>
-            <span className='row' onClick={this.log}>
+            <span className='row'>
               <span className='six columns'>
                 <span className='date'>{transaction.date}</span>
                 <span className='payee'>{transaction.payee}</span>
@@ -64,7 +64,7 @@ class Transactions extends Component {
             </span>
           </ListItem>)
         })}
-      </List></div>)
+      </List>)
   }
 }
 
