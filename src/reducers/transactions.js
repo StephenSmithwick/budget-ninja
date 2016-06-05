@@ -1,57 +1,62 @@
-import {UPDATE_TRANSACTION, SELECT_TRANSACTION, UNSELECT_TRANSACTION} from '../actions/TransactionActions'
+import {UPDATE_TRANSACTION, SELECT_TRANSACTION, UNSELECT_TRANSACTION} from '../actions/Actions'
 import update from 'react-addons-update'
 
 const initialState = {
-  selected: null,
-  collection: [{
+  hsbc_au: {
+    1: {
       id: 1,
-      account_id: 2,
+      account_slug: 'hsbc_au',
       date: "1983-01-01",
       description: "Test AU - 1",
       payee: "Coles",
       total: 80,
       tags: ['pending'],
       itemized: [
-        {category_id: 2, amount: 20 },
-        {category_id: 1, amount: 60 }
+        {category_slug: 'luxory',  amount: 20 },
+        {category_slug: 'grocery', amount: 60 }
       ]
-    }, {
+    },
+    2: {
       id: 2,
-      account_id: 2,
+      account_slug: 'hsbc_au',
       date: "1982-12-28",
       description: "Test AU - 2",
       payee: "Woolworths",
       total: 120,
       tags: [],
       itemized: [
-        {category_id: 1, amount: 30 },
-        {category_id: 3, amount: 40 }
+        {category_slug: 'luxory', amount: 30 },
+        {category_slug: 3, amount: 40 }
       ]
-    }, {
-      id: 3,
-      account_id: 1,
-      date: "1982-12-16",
-      description: "Test US",
-      payee: "Amazon",
-      total: 80,
-      tags: [],
-      itemized: [
-        {category_id: 2, amount: 80 }
-      ]
-    }, {
+    },
+    4: {
       id: 4,
-      account_id: 2,
+      account_slug: 'hsbc_au',
       date: "1982-12-16",
       description: "Test Australia",
       payee: "Woolworths",
       total: 110,
       tags: [],
       itemized: [
-        {category_id: 3, amount: 20 },
-        {category_id: 1, amount: 90 }
+        {category_slug: 3, amount: 20 },
+        {category_slug: 1, amount: 90 }
       ]
     }
-  ]
+  },
+  wellsfargo: {
+    3: {
+      id: 3,
+      account_slug: 'wellsfargo',
+      date: "1982-12-16",
+      description: "Test US",
+      payee: "Amazon",
+      total: 80,
+      tags: [],
+      itemized: [
+        {category_slug: 2, amount: 80 }
+      ]
+    }
+  }
 }
 
 function update_state(state, transaction, change) {
@@ -62,21 +67,20 @@ function update_state(state, transaction, change) {
 export default function transactions(state = initialState, action) {
   switch (action.type) {
   case UPDATE_TRANSACTION:
-    return update_state(state, action.transaction,  function(i) {
-      const updated_transaction = update(state.collection[i], {$merge: action.delta})
-      return {
-        selected: {$set: updated_transaction},
-        collection: { $splice: [[i, 1, updated_transaction]] }
+    console.log([state, {
+      [action.account_slug]: {
+        [action.transaction_id]: {
+          $merge: action.delta
+        }
       }
-    })
-
-  case SELECT_TRANSACTION:
-    return update_state(state, action.transaction, i => ({
-      selected: {$set: action.transaction}
-    }))
-
-  case UNSELECT_TRANSACTION:
-    return update(state, {selected: {$set: null}})
+    }])
+    return update(state, {
+      [action.account_slug]: {
+        [action.transaction_id]: {
+          $merge: action.delta
+        }
+      }
+    });
 
   default:
     return state

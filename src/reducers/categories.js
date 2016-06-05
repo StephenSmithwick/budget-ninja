@@ -1,7 +1,7 @@
 const initialState = [
-  {id: 1, icon: 'Cart', name: "Groceries"},
-  {id: 2, icon: 'Watch', name: "Luxory", parent_id: 1},
-  {id: 3, icon: 'Explore', name: "Essentials", parent_id: 1 }
+  {slug: 'groceries',  icon: 'Cart',    name: "Groceries"},
+  {slug: 'luxories',   icon: 'Watch',   name: "Luxory",     parent_slug: 'groceries'},
+  {slug: 'essentials', icon: 'Explore', name: "Essentials", parent_slug: 'groceries' }
 ]
 
 export default function categories(state = initialState, action) {

@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
-import TransactionActions from '../../actions/TransactionActions';
+import Actions from '../../actions/Actions';
 
 import TextField from 'material-ui/TextField';
 import DatePicker from 'material-ui/DatePicker';
@@ -10,7 +10,7 @@ import DatePicker from 'material-ui/DatePicker';
 import moment from 'moment';
 
 function DateInput(props) {
-  const {transaction, label, property, dispatch} = props
+  const {account_slug, transaction, label, property, dispatch} = props
   const format = props.format || "YYYY-MM-DD"
 
   const string2Date = (str) => new Date(moment(str, format))
@@ -23,13 +23,14 @@ function DateInput(props) {
                 textFieldStyle={{width: '100%'}}
                 autoOk={true}
                 value={string2Date(transaction[property])}
-                onChange={(e,date) => dispatch.updateTransaction(transaction, {[property]: date2String(date)})}/>
+                onChange={(e,date) => dispatch.updateTransaction(account_slug, transaction.id, {[property]: date2String(date)})}/>
     </span>
   )
 }
 
 DateInput.propTypes = {
   transaction: PropTypes.object.isRequired,
+  account_slug: PropTypes.string.isRequired,
   label: PropTypes.string.isRequired,
   property: PropTypes.string.isRequired,
   format: PropTypes.string
@@ -37,9 +38,10 @@ DateInput.propTypes = {
 
 export default connect(
   state => ({
-    transaction: state.transactions.selected
+    account_slug: state.views.selected.account_slug,
+    transaction: state.transactions[state.views.selected.account_slug][state.views.selected.transaction_id]
   }),
   dispatch => ({
-    dispatch: bindActionCreators(TransactionActions, dispatch)
+    dispatch: bindActionCreators(Actions, dispatch)
   })
 )(DateInput)

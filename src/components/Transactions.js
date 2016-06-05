@@ -1,12 +1,13 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import _ from 'lodash';
 
 import {List, ListItem} from 'material-ui/List';
 import Subheader from 'material-ui/Subheader';
 import Avatar from 'material-ui/Avatar';
 
-import TransactionActions from '../actions/TransactionActions';
+import Actions from '../actions/Actions';
 import * as Icons from './Icons';
 
 class Transactions extends Component {
@@ -33,21 +34,14 @@ class Transactions extends Component {
     return categories.find(c => c.id === item.category_id) || {icon: 'Problem'};
   }
 
-  account(transaction) {
-    const {accounts} = this.props;
-    return accounts.find((a) => a.id == transaction.account_id)
-  }
-
   render() {
-    const {transactions, dispatch, accounts} = this.props;
+    const {transactions, dispatch, accounts, account} = this.props;
 
     return (
       <List>
-      <Subheader>Transactions</Subheader>
-        {(transactions||[]).map((transaction, i) => {
-          const account = this.account(transaction);
+        {_.map(transactions, (transaction, i) => {
           const currency = <span className='currency'>{account.currency}</span>;
-          const selectTransaction = () => { dispatch.selectTransaction(transaction) };
+          const selectTransaction = () => { dispatch.selectTransaction(transaction.id) };
           const avatar = <Avatar icon={this.mainCategoryIcon(transaction)}
             style={{top: '50%', transform: 'translateY(-50%)'}} />
 
@@ -83,19 +77,20 @@ class Transactions extends Component {
 }
 
 Transactions.propTypes = {
-  accounts: PropTypes.arrayOf(PropTypes.object).isRequired,
-  transactions: PropTypes.arrayOf(PropTypes.object).isRequired,
-  categories: PropTypes.arrayOf(PropTypes.object).isRequired,
-  dispatch: PropTypes.object.isRequired
+  account: PropTypes.object.isRequired,
+  accounts: PropTypes.object.isRequired,
+  transactions: PropTypes.object.isRequired,
+  categories: PropTypes.arrayOf(PropTypes.object).isRequired
 };
 
 export default connect(
   state => ({
+    account: state.accounts[state.views.selected.account_slug],
     accounts: state.accounts,
-    transactions: state.transactions.collection,
+    transactions: state.transactions[state.views.selected.account_slug] || [],
     categories: state.categories
   }),
   dispatch => ({
-    dispatch: bindActionCreators(TransactionActions, dispatch)
+    dispatch: bindActionCreators(Actions, dispatch)
   })
 )(Transactions)

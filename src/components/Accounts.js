@@ -1,23 +1,27 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+
+import _ from 'lodash';
 
 import {List, ListItem} from 'material-ui/List';
 import Subheader from 'material-ui/Subheader';
 import Avatar from 'material-ui/Avatar';
 
+import Actions from '../actions/Actions';
 import {Account} from './Icons';
 
 export default function Accounts(props) {
-  const {accounts} = props;
+  const {accounts, dispatch} = props;
 
   return (
     <List>
-    <Subheader>Accounts</Subheader>
-      {accounts.map((account, i) => {
+      {_.map(accounts, (account, i) => {
         const currency = <span className='currency'>{account.currency}</span>;
-        const avatar = <Avatar icon={<Account/>}/>;
+        const accountIcon = <Avatar icon={<Account/>}/>;
+        function selectAccount() { dispatch.selectAccount(account.slug) }
 
-        return (<ListItem className='account' key={i} leftAvatar={avatar}>
+        return (<ListItem onClick={selectAccount} className='account' key={i} leftAvatar={accountIcon}>
           <span className='row'>
             <span className='col-xs'>
               <span className='name'>{account.name}</span>
@@ -33,12 +37,14 @@ export default function Accounts(props) {
 }
 
 Accounts.propTypes = {
-  accounts: PropTypes.arrayOf(PropTypes.object).isRequired
+  accounts: PropTypes.object.isRequired
 };
 
-function mapStateToProps(state) {
-  return {
+export default connect(
+  state => ({
     accounts: state.accounts
-  };
-}
-export default connect(mapStateToProps)(Accounts);
+  }),
+  dispatch => ({
+    dispatch: bindActionCreators(Actions, dispatch)
+  })
+)(Accounts);

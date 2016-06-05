@@ -2,12 +2,12 @@ import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
-import TransactionActions from '../../actions/TransactionActions';
+import Actions from '../../actions/Actions';
 
 import TextField from 'material-ui/TextField';
 
 function AmountInput(props) {
-  const {currency, transaction, account, label, property, dispatch} = props;
+  const {currency, account_slug, transaction, account, label, property, dispatch} = props;
 
   return (
     <span className="amount-field {property} col-xs">
@@ -15,13 +15,14 @@ function AmountInput(props) {
            floatingLabelText={label}
            style={{width: '80%'}}
            value={transaction[property]}
-           onChange={e => dispatch.updateTransaction(transaction, {[property]: e.target.value})}/>
+           onChange={e => dispatch.updateTransaction(account_slug, transaction.id, {[property]: e.target.value})}/>
       <span className='currency'>{currency}</span>
     </span>
   )
 }
 
 AmountInput.propTypes = {
+  account_slug: PropTypes.string.isRequired,
   transaction: PropTypes.object.isRequired,
   label: PropTypes.string.isRequired,
   property: PropTypes.string.isRequired
@@ -29,9 +30,10 @@ AmountInput.propTypes = {
 
 export default connect(
   state => ({
-    transaction: state.transactions.selected
+    account_slug: state.views.selected.account_slug,
+    transaction: state.transactions[state.views.selected.account_slug][state.views.selected.transaction_id]
   }),
   dispatch => ({
-    dispatch: bindActionCreators(TransactionActions, dispatch)
+    dispatch: bindActionCreators(Actions, dispatch)
   })
 )(AmountInput)

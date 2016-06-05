@@ -1,8 +1,9 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import _ from 'lodash';
 
-import TransactionActions from '../../actions/TransactionActions';
+import Actions from '../../actions/Actions';
 import {Check} from '../Icons';
 import SelectInput from './SelectInput'
 import TextInput from './TextInput'
@@ -39,44 +40,36 @@ class TransactionsDetails extends Component {
     return categories.find(c => c.id === item.category_id) || {icon: 'Problem'};
   }
 
-  account(transaction) {
-    const {accounts} = this.props;
-    return accounts.find((a) => a.id == transaction.account_id)
-  }
-
   componentDidUpdate() {
     if(this._container) this._container.scrollIntoView()
   }
 
   render() {
-    const {transaction, dispatch, accounts} = this.props;
+    const {transaction, dispatch, accounts, account} = this.props;
     if(!transaction) return null;
-
-    const account = this.account(transaction);
+    const account_options = _.map(accounts, (a) => a);
 
     return (
       <div ref={(ref) => this._container = ref}><List>
-          <Subheader>{transaction.payee}</Subheader>
-          <ListItem><span className="row">
-            <SelectInput label='Account' property='account_id' options={accounts}/>
-            <TextInput label='Payee' property='payee'/>
-          </span></ListItem>
-          <ListItem><span className="row">
-            <DateInput label='Date' property='date'/>
-            <AmountInput label='Total' property='total' currency={account.currency}/>
-          </span></ListItem>
-          <ListItem><span className="row">
-            <TextInput  label='Description' property='description'/>
-          </span></ListItem>
-          <ListItem><span className="row">
-              <RaisedButton
-                label="Done"
-                primary={true}
-                icon={<Check color={fullWhite} />}
-                className="col-xs"
-                onTouchTap={dispatch.unselectTransaction}
-              />
-          </span></ListItem>
+        <ListItem><span className="row">
+          <SelectInput label='Account' property='account_id' options={account_options}/>
+          <TextInput label='Payee' property='payee'/>
+        </span></ListItem>
+        <ListItem><span className="row">
+          <DateInput label='Date' property='date'/>
+          <AmountInput label='Total' property='total' currency={account.currency}/>
+        </span></ListItem>
+        <ListItem><span className="row">
+          <TextInput  label='Description' property='description'/>
+        </span></ListItem>
+        <ListItem><span className="row">
+          <RaisedButton
+            label="Done"
+            primary={true}
+            icon={<Check color={fullWhite} />}
+            className="col-xs"
+            onTouchTap={dispatch.unselectTransaction} />
+        </span></ListItem>
       </List></div>
     );
   }
@@ -88,11 +81,12 @@ TransactionsDetails.propTypes = {
 
 export default connect(
   state => ({
+    account: state.accounts[state.views.selected.account_slug],
     categories: state.categories,
     accounts: state.accounts,
-    transaction: state.transactions.selected
+    transaction: state.transactions[state.views.selected.account_slug][state.views.selected.transaction_id]
   }),
   dispatch => ({
-    dispatch: bindActionCreators(TransactionActions, dispatch)
+    dispatch: bindActionCreators(Actions, dispatch)
   })
 )(TransactionsDetails)

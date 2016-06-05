@@ -2,12 +2,12 @@ import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
-import TransactionActions from '../../actions/TransactionActions';
+import Actions from '../../actions/Actions';
 
 import TextField from 'material-ui/TextField';
 
 function TextInput(props) {
-  const {transaction, label, property, dispatch} = props
+  const {account_slug, transaction, label, property, dispatch} = props
 
   return (
     <span className="text-field {property} col-xs">
@@ -15,22 +15,24 @@ function TextInput(props) {
              floatingLabelText={label}
              style={{width: '100%'}}
              value={transaction[property]}
-             onChange={e => dispatch.updateTransaction(transaction, {[property]: e.target.value})}/>
+             onChange={e => dispatch.updateTransaction(account_slug, transaction.id, {[property]: e.target.value})}/>
     </span>
   )
 }
 
 TextInput.propTypes = {
   transaction: PropTypes.object.isRequired,
+  account_slug: PropTypes.string.isRequired,
   label: PropTypes.string.isRequired,
   property: PropTypes.string.isRequired
 };
 
 export default connect(
   state => ({
-    transaction: state.transactions.selected
+    account_slug: state.views.selected.account_slug,
+    transaction: state.transactions[state.views.selected.account_slug][state.views.selected.transaction_id]
   }),
   dispatch => ({
-    dispatch: bindActionCreators(TransactionActions, dispatch)
+    dispatch: bindActionCreators(Actions, dispatch)
   })
 )(TextInput)
