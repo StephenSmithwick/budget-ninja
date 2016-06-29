@@ -11,15 +11,14 @@ import Actions from '../actions/Actions';
 function TabViews(props) {
   const {dispatch, tabs, active_tab} = props;
 
-  const tabDoms = {
-    accounts: <Tab value='accounts' icon={<Account>Accounts</Account>} label="Accounts" onActive={() => dispatch.activateTab('accounts')}/>,
-    transactions: <Tab value='transactions' icon={<Money>Transactions</Money>} label="Transactions" onActive={() => dispatch.activateTab('transactions')}/>,
-    details: <Tab value='details' icon={<Wallet/>} label="Details" onActive={() => dispatch.activateTab('details')}/>
-  }
-
   return (
     <Tabs value={active_tab}>
-      {tabs.map( tab => tabDoms[tab])}
+      <Tab value='accounts' label="Accounts"
+        icon={<Account>Accounts</Account>} onActive={() => dispatch.activateTab('accounts')}/>
+      <Tab value='transactions' label="Transactions"
+        icon={<Money>Transactions</Money>} onActive={() => dispatch.activateTab('transactions')}/>
+      <Tab value='details' label="Details"
+        icon={<Wallet/>} onActive={() => dispatch.activateTab('details')}/>
     </Tabs>
   )
 }

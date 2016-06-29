@@ -16,9 +16,9 @@ function Views(props) {
   const {dispatch, tabs, active_tab} = props;
   const tab_index = tabs.indexOf(active_tab);
   const views = {
-    accounts: <Accounts />,
-    transactions: <Transactions/>,
-    details: <TransactionDetails />
+    accounts: <Accounts key="accounts" />,
+    transactions: <Transactions key="transactions" />,
+    details: <TransactionDetails key="details" />
   }
 
   return (
