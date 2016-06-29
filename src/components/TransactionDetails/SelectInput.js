@@ -8,10 +8,10 @@ import SelectField from 'material-ui/SelectField';
 import MenuItem from 'material-ui/MenuItem';
 
 function SelectInput(props) {
-  const {account_slug, transaction, label, property, options, dispatch} = props
+  const {account_slug, transaction, label, property, options, dispatch, className} = props
 
   return (
-    <span className="select-field {property} col-xs">
+    <span className={`select-field ${property} ${className}`}>
       <SelectField hintText={label}
                    floatingLabelText={label}
                    style={{width: '100%'}}

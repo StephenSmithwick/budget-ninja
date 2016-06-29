@@ -7,10 +7,10 @@ import Actions from '../../actions/Actions';
 import TextField from 'material-ui/TextField';
 
 function AmountInput(props) {
-  const {currency, account_slug, transaction, account, label, property, dispatch} = props;
+  const {currency, account_slug, transaction, account, label, property, className, dispatch} = props;
 
   return (
-    <span className="amount-field {property} col-xs">
+    <span className={`amount-field ${property} ${className}`}>
       <TextField hintText={label}
            floatingLabelText={label}
            style={{width: '80%'}}

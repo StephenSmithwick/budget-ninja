@@ -10,14 +10,14 @@ import DatePicker from 'material-ui/DatePicker';
 import moment from 'moment';
 
 function DateInput(props) {
-  const {account_slug, transaction, label, property, dispatch} = props
+  const {account_slug, transaction, label, property, dispatch, className} = props
   const format = props.format || "YYYY-MM-DD"
 
   const string2Date = (str) => new Date(moment(str, format))
   const date2String = (date) => moment(date).format(format)
 
   return (
-    <span className="date-field {property} col-xs">
+    <span className={`date-field ${property} ${className}`}>
       <DatePicker hintText={label}
                 floatingLabelText={label}
                 textFieldStyle={{width: '100%'}}

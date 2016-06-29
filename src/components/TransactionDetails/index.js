@@ -52,23 +52,20 @@ class TransactionsDetails extends Component {
     return (
       <div ref={(ref) => this._container = ref}><List>
         <ListItem><span className="row">
-          <SelectInput label='Account' property='account_id' options={account_options}/>
-          <TextInput label='Payee' property='payee'/>
+          <SelectInput label='Account' property='account_id' className="col-xs" options={account_options}/>
+          <TextInput label='Payee' property='payee' className="col-xs"/>
         </span></ListItem>
         <ListItem><span className="row">
-          <DateInput label='Date' property='date'/>
-          <AmountInput label='Total' property='total' currency={account.currency}/>
+          <DateInput label='Date' property='date' className="col-xs"/>
+          <AmountInput label='Total' property='total' currency={account.currency} className="col-xs"/>
         </span></ListItem>
         <ListItem><span className="row">
-          <TextInput  label='Description' property='description'/>
+          <TextInput  label='Description' property='description' className="col-xs"/>
         </span></ListItem>
         <ListItem><span className="row">
           <RaisedButton
-            label="Done"
-            primary={true}
-            icon={<Check color={fullWhite} />}
-            className="col-xs"
-            onTouchTap={dispatch.unselectTransaction} />
+            label="Done" primary={true} onTouchTap={dispatch.unselectTransaction}
+            icon={<Check color={fullWhite} />} className="button col-xs" />
         </span></ListItem>
       </List></div>
     );

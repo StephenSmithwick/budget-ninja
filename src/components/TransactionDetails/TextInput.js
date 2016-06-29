@@ -7,10 +7,10 @@ import Actions from '../../actions/Actions';
 import TextField from 'material-ui/TextField';
 
 function TextInput(props) {
-  const {account_slug, transaction, label, property, dispatch} = props
+  const {account_slug, transaction, label, property, dispatch, className} = props
 
   return (
-    <span className="text-field {property} col-xs">
+    <span className={`text-field ${property} ${className}`}>
       <TextField hintText={label}
              floatingLabelText={label}
              style={{width: '100%'}}
