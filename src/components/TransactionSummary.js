@@ -21,11 +21,11 @@ const Cell = (props) => (
 )
 
 function TransactionSummary(props) {
-  const {currency, transaction, key, selectTransaction} = props;
+  const {currency, transaction, selectTransaction} = props;
 
 
   return (
-    <ListItem key={key} className='transaction'
+    <ListItem key={transaction.id} className='transaction'
       leftAvatar={<TransactionAvatar transaction={transaction}/>}
       onClick={() => { selectTransaction(transaction.id) }}>
       <span className='row'>
@@ -45,9 +45,8 @@ function TransactionSummary(props) {
 }
 
 TransactionSummary.propTypes = {
-  currency: PropTypes.object.isRequired,
+  currency: PropTypes.string.isRequired,
   transaction: PropTypes.object.isRequired,
-  key: PropTypes.object.isRequired
 };
 
 export default connect(

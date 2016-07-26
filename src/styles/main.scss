@@ -42,6 +42,10 @@ $black: #111;
   background-size: 13px, 29px, 37px, 53px;
 }
 
+.category .icon {
+  color: $accent-blue;
+}
+
 header {
   @extend .stripes;
   // background-color: $accent-gray;
@@ -105,4 +109,10 @@ footer {
   padding: 0;
   margin-right: 0.5rem;
   margin-right: 0.5rem;
+}
+
+.itemized h3 {
+  font-size: 12px;
+  font-weight: normal;
+  color: rgba(17, 17, 17, 0.498039);
 }

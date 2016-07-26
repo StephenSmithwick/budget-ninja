@@ -13,7 +13,7 @@ function TransactionAvatar(props) {
     (x,y) => x.amount > y.amount ? x : y,
     {amount: 0}
   )
-  const category = categories.find(c => c.id === max.category_id) || {icon: 'Problem'};
+  const category = categories.find(c => c.slug === max.category_slug) || {icon: 'Problem'};
 
   const Icon = Icons[category.icon]
   const style = {

@@ -12,8 +12,8 @@ const initialState = {
       total: 80,
       tags: ['pending'],
       itemized: [
-        {category_slug: 'luxory',  amount: 20 },
-        {category_slug: 'grocery', amount: 60 }
+        {category_slug: 'luxories',  amount: 20 },
+        {category_slug: 'groceries', amount: 60 }
       ]
     },
     2: {
@@ -25,8 +25,8 @@ const initialState = {
       total: 120,
       tags: [],
       itemized: [
-        {category_slug: 'luxory', amount: 30 },
-        {category_slug: 3, amount: 40 }
+        {category_slug: 'luxories', amount: 30 },
+        {category_slug: 'essentials', amount: 40 }
       ]
     },
     4: {
@@ -38,8 +38,8 @@ const initialState = {
       total: 110,
       tags: [],
       itemized: [
-        {category_slug: 3, amount: 20 },
-        {category_slug: 1, amount: 90 }
+        {category_slug: 'essentials', amount: 20 },
+        {category_slug: 'groceries', amount: 90 }
       ]
     }
   },
@@ -53,7 +53,7 @@ const initialState = {
       total: 80,
       tags: [],
       itemized: [
-        {category_slug: 2, amount: 80 }
+        {category_slug: 'luxories', amount: 80 }
       ]
     }
   }

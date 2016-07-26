@@ -40,7 +40,7 @@ class Transactions extends Component {
 
     return (
       <List>{_.map( transactions,
-        (transaction, i) => <TransactionSummary transaction={transaction} key={i}/>
+        (transaction, i) => <TransactionSummary transaction={transaction} key={transaction.id}/>
       )}</List>
     )
   }
@@ -52,7 +52,7 @@ Transactions.propTypes = {
 
 export default connect(
   state => ({
-    transactions: state.transactions[state.views.selected.account_slug] || [],
+    transactions: state.transactions[state.views.selected.account_slug] || {},
   }),
   Actions
 )(Transactions)

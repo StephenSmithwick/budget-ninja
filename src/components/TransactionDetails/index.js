@@ -7,6 +7,7 @@ import Actions from '../../actions/Actions';
 import {Check} from '../Icons';
 import SelectInput from './SelectInput'
 import TextInput from './TextInput'
+import ItemizedInput from './ItemizedInput'
 import AmountInput from './AmountInput'
 import DateInput from './DateInput'
 
@@ -56,11 +57,14 @@ class TransactionsDetails extends Component {
           <TextInput label='Payee' property='payee' className="col-xs"/>
         </span></ListItem>
         <ListItem><span className="row">
+          <TextInput  label='Description' property='description' className="col-xs"/>
+        </span></ListItem>
+        <ListItem><span className="row">
           <DateInput label='Date' property='date' className="col-xs"/>
           <AmountInput label='Total' property='total' currency={account.currency} className="col-xs"/>
         </span></ListItem>
         <ListItem><span className="row">
-          <TextInput  label='Description' property='description' className="col-xs"/>
+          <ItemizedInput label='Breakdown' property='itemized' currency={account.currency} className="col-xs"/>
         </span></ListItem>
         <ListItem><span className="row">
           <RaisedButton
